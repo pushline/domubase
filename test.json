@@ -1,0 +1,144 @@
+{
+    "DadosGerais": {
+       "NomeFundo": "FII ALLIANZA TRUST RENDA IMOBILIÁRIA",
+       "CNPJFundo": "28737771000185",
+       "DataFuncionamento": "2017-12-27",
+       "PublicoAlvo": "Investidores em Geral",
+       "CodigoISIN": "BRALZRCTF006",
+       "QtdCotasEmitidas": "4479484",
+       "FundoExclusivo": "false",
+       "VinculoFamiliarCotistas": "false",
+       "Autorregulacao": {
+          "Mandato": "Renda",
+          "SegmentoAtuacao": "Híbrido",
+          "TipoGestao": "Ativa"
+       },
+       "PrazoDuracao": "Indeterminado",
+       "DataPrazoDuracao": {
+          "@nil": "true"
+       },
+       "EncerramentoExercicio": "30/06",
+       "MercadoNegociacao": {
+          "Bolsa": "true",
+          "MBO": "false",
+          "MB": "false"
+       },
+       "EntidadeAdministradora": {
+          "BVMF": "true",
+          "CETIP": "false"
+       },
+       "NomeAdministrador": "BTG Pactual Serviços Financeiros S.A. – DTVM",
+       "CNPJAdministrador": "59281253000123",
+       "Logradouro": "Praia de Botafogo",
+       "Numero": "501",
+       "Complemento": "6º Andar",
+       "Bairro": "Botafogo",
+       "Cidade": "Rio de Janeiro",
+       "Estado": "RJ",
+       "CEP": "22.250-040",
+       "Telefone1": "55 11 3383-3102",
+       "Telefone2": {
+          "@nil": "true"
+       },
+       "Telefone3": {
+          "@nil": "true"
+       },
+       "Site": "www.btgpactual.com",
+       "Email": "ri.fundoslistados@btgpactual.com",
+       "Competencia": "2021-02-28"
+    },
+    "InformeMensal": {
+       "Cotistas": {
+          "@data_informacao": "2021-02-28",
+          "@total": "83323",
+          "PessoaFisica": "83182",
+          "PJNaoFinanceira": "119",
+          "BancoComercial": "0",
+          "CorretoraDistribuidora": "0",
+          "OutrasPJFinanceiras": "0",
+          "InvestidoresNaoResidentes": "3",
+          "EntidadeAbertaPrevCompl": "0",
+          "EntidadeFechadaPrevCompl": "1",
+          "RegimeProprioPrev": "0",
+          "SociedadeSeguradora": "0",
+          "SociedadeCapArrendMercantil": "0",
+          "FundosInvImobiliario": "7",
+          "OutrosFundosInv": "11",
+          "CotistasDistFundo": "0",
+          "OutrosTiposCotistas": "0"
+       },
+       "Resumo": {
+          "Ativo": "672696322.57",
+          "PatrimonioLiquido": "458898939.12",
+          "NumCotasEmitidas": "4479484",
+          "ValorPatrCotas": "102.444598333201",
+          "DespesasTxAdministracao": "0.001005",
+          "DespesasAgCustodiante": "0",
+          "RentEfetivaMensal": {
+             "@total": "0.004737",
+             "RentPatrimonialMes": "-0.001045",
+             "DividendYieldMes": "0.005782"
+          },
+          "AmortizAcoesCotas": "0"
+       },
+       "InformacoesAtivo": {
+          "TotalNecessidadesLiq": {
+             "@total": "7902763.51",
+             "Disponibilidades": "161.21",
+             "TitulosPublicos": "0",
+             "TitulosPrivados": "0",
+             "FundosRendaFixa": "7902602.3"
+          },
+          "TotalInvestido": {
+             "@total": "587827110.53",
+             "DireitosBensImoveis": {
+                "@total": "587827110.53",
+                "Terrenos": "0",
+                "ImoveisRendaAcabados": "587827110.53",
+                "ImoveisRendaConstrucao": "0",
+                "ImoveisVendaAcabados": "0",
+                "ImoveisVendaConstrucao": "0",
+                "OutrosDireitosReais": "0"
+             },
+             "Acoes": "0",
+             "Debentures": "0",
+             "BonusSubscricao": "0",
+             "CertificadosDepositoValMob": "0",
+             "CedulasDebentures": "0",
+             "FIA": "0",
+             "FIP": "0",
+             "FII": "0",
+             "FDIC": "0",
+             "OutrasCotasFI": "0",
+             "NotasPromissorias": "0",
+             "AcoesSociedadesAtivFII": "0",
+             "CotasSociedadesAtivFII": "0",
+             "CEPAC": "0",
+             "CRI": "0",
+             "LetrasHipotecarias": "0",
+             "LCI": "0",
+             "LIG": "0",
+             "OutrosValoresMobliarios": "0"
+          },
+          "ValoresReceber": {
+             "@total": "76966448.53",
+             "Alugueis": "2661720.53",
+             "VendaImoveis": "0",
+             "OutrosValores": "74304728"
+          }
+       },
+       "InformacoesPassivo": {
+          "RendimentosDistribuir": "2656324.8",
+          "TxAdministracaoPagar": "461021.45",
+          "TxPerformancePagar": "0",
+          "ObrigacoesAquisicaoImov": "44857000",
+          "AdiantamentoVendaImov": "0",
+          "AdiantamentoAlugueis": "0",
+          "ObrigacoesSecRecebiveis": "165739617.79",
+          "InstrumentosFinanceirosDeriv": "0",
+          "ProvisoesContigencias": "0",
+          "OutrosValoresPagar": "83419.41",
+          "TotalPassivo": "213797383.45"
+       }
+    }
+ }
