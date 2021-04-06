@@ -2,21 +2,9 @@
 <html><head><meta charset="utf-8"></head>
 <body>
 <h1>Teste</h1>
-<?php
 
-if(isset($_FILES['arquivo'])){
 
-$conn = new mysqli('localhost', 'root', '', 'jsonkk');
 
-$file = $_FILES['arquivo']['tmp_name'];
-
-    $json = file_get_contents($file);
-    $post = json_decode($json); 
-    
-        $query = "INSERT INTO json ( name, json) VALUES ('aaa', '$json')";
-        mysqli_query($conn, $query);
-}
-?>
 
 <form action="index.php" method="POST" enctype="multipart/form-data">
   Arquivo: <input type="file" required name="arquivo">
@@ -39,50 +27,73 @@ Pesquisar os dados gerais e o informe mensal:
 <?php
 $conn = new mysqli('localhost', 'root', '', 'jsonkk');
 
-function getValuesArray(array $array){
-  foreach ($array as $key => $value){
+if (isset($_FILES['arquivo']))
+{
+
+    $file = $_FILES['arquivo']['tmp_name'];
+
+    $json = file_get_contents($file);
+    $post = json_decode($json);
+
+    $query = "INSERT INTO json ( name, json) VALUES ('aaa', '$json')";
+    mysqli_query($conn, $query);
+}
+
+////////////////////////
+function getValuesArray(array $array)
+{
+    foreach ($array as $key => $value)
+    {
+        if (is_array($value) && count($value) > 0)
+        {
+            getValuesArray($value);
+        }
+        else
+        {
+            echo '<p>' . $key . ': ' . $value . "</p><br>\n";
+        }
+    }
+}
+
+function getValuesArray2(array $array){
+    foreach ($array as $key => $value){
       if(is_array($value) && count($value) > 0){
-          getValuesArray($value);
+          getValuesArray2($value);
       }
       else{
-        echo '<p>' . $key . ': ' . $value . "</p><br>\n";
+          echo '<p>' . $key . ': ' . $value . "</p><br>\n";
       }
-  }
+    }
+}
+////////////////////////
+if (isset($_POST['pesquisa']))
+{
+    $pesquisar = $_POST['pesquisar'];
+
+    $result_fundos = "SELECT * FROM `json` as allData WHERE JSON_SEARCH(json, 'all', '%$pesquisar%') IS NOT NULL";
+    $resultado = mysqli_query($conn, $result_fundos);
+     while ($rows_fundos = mysqli_fetch_assoc($resultado))
+    {
+        // echo "Nome do Fundo: " . $rows_fundos['DadosGerais']['NomeFundo'] . "<br>";
+        // echo PHP_EOL;
+
+        var_dump($rows_fundos);
+        $obj = json_encode($rows_fundos['allData']);       
+        $allData = json_decode($rows_fundos['allData'], true);
+        $dadosGerais = $allData['DadosGerais'];
+        $informeMensal = $allData['InformeMensal'];
+
+        getValuesArray($dadosGerais, $informeMensal);           
+
+
+     }
+
 }
 
 
-          if(isset($_POST['pesquisa'])){
-               $pesquisar = $_POST['pesquisar'];
 
 
-                  $result_fundos = "SELECT JSON_UNQUOTE(JSON_EXTRACT(json, '$.DadosGerais.NomeFundo')) as nomefundo FROM json"; 
-                      $resultado = mysqli_query($conn, $result_fundos);
-                      
-                      while($rows_fundos = mysqli_fetch_assoc($resultado)){
-                          echo "Nome do Fundo: ".$rows_fundos['nomefundo']."<br>";
-                            echo PHP_EOL;
-                            echo PHP_EOL;
-                        
-                            $sql = "SELECT JSON_EXTRACT(json, '$.DadosGerais') as dataAll FROM json";
-                      $resultado = mysqli_query($conn, $sql);
-                          $dados_gerais = array();
-                  while($dado = mysqli_fetch_assoc($resultado)) {
-                  $dados_gerais[] = $dado;
-        }
-
-          $dadosGerais = json_decode($dados_gerais[0]['dataAll'], true);
-
-          getValuesArray($dadosGerais);
-                        
-                      
-                          }
-
-    }
-  
 ?>
 </form> 
-
 </body>
 </html>
-
- 
