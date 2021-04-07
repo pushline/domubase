@@ -72,7 +72,7 @@ if (isset($_POST['pesquisa']))
 {
     $pesquisar = $_POST['pesquisar'];
 
-    $result_fundos = "SELECT json FROM `json` as allData WHERE JSON_SEARCH(json, 'one', '%$pesquisar%') IS NOT NULL";
+    $result_fundos = "SELECT json FROM `json` WHERE JSON_SEARCH(json, 'one', '%$pesquisar%') IS NOT NULL";
     $resultado = mysqli_query($conn, $result_fundos);
     while ($rows_fundos = mysqli_fetch_assoc($resultado))
     {
