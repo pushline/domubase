@@ -4,8 +4,6 @@
 <h1>Teste</h1>
 
 
-
-
 <form action="index.php" method="POST" enctype="multipart/form-data">
   Arquivo: <input type="file" required name="arquivo">
   <input type="submit" value="Salvar">
@@ -18,11 +16,11 @@
 <form action="index.php" method="POST" enctype="multipart/form-data">
 Pesquisar os dados gerais e o informe mensal:
 <br><br>
-<input type="text" name="pesquisar" placeholder="PESQUISAR">
+<input type="text" name="pesquisar" placeholder="PESQUISAR" required/>
 
 <br><br>
 
-<input type="submit" value="ENVIAR" name="pesquisa"><br><br>
+<input type="submit" value="ENVIAR" name="pesquisa" required/><br><br>
 
 <?php
 $conn = new mysqli('localhost', 'root', '', 'jsonkk');
@@ -55,14 +53,18 @@ function getValuesArray(array $array)
     }
 }
 
-function getValuesArray2(array $array){
-    foreach ($array as $key => $value){
-      if(is_array($value) && count($value) > 0){
-          getValuesArray2($value);
-      }
-      else{
-          echo '<p>' . $key . ': ' . $value . "</p><br>\n";
-      }
+function getValuesArray2(array $array)
+{
+    foreach ($array as $key => $value)
+    {
+        if (is_array($value) && count($value) > 0)
+        {
+            getValuesArray2($value);
+        }
+        else
+        {
+            echo '<p>' . $key . ': ' . $value . "</p><br>\n";
+        }
     }
 }
 ////////////////////////
@@ -70,28 +72,25 @@ if (isset($_POST['pesquisa']))
 {
     $pesquisar = $_POST['pesquisar'];
 
-    $result_fundos = "SELECT * FROM `json` as allData WHERE JSON_SEARCH(json, 'all', '%$pesquisar%') IS NOT NULL";
+    $result_fundos = "SELECT json FROM `json` as allData WHERE JSON_SEARCH(json, 'one', '%$pesquisar%') IS NOT NULL";
     $resultado = mysqli_query($conn, $result_fundos);
-     while ($rows_fundos = mysqli_fetch_assoc($resultado))
+    while ($rows_fundos = mysqli_fetch_assoc($resultado))
     {
-        // echo "Nome do Fundo: " . $rows_fundos['DadosGerais']['NomeFundo'] . "<br>";
-        // echo PHP_EOL;
 
-        var_dump($rows_fundos);
-        $obj = json_encode($rows_fundos['allData']);       
-        $allData = json_decode($rows_fundos['allData'], true);
+        //var_dump($rows_fundos);
+        $allData = json_decode($rows_fundos['json'], true);
         $dadosGerais = $allData['DadosGerais'];
         $informeMensal = $allData['InformeMensal'];
 
-        getValuesArray($dadosGerais, $informeMensal);           
+        echo "<br><br><br> <h1>Dados Gerais: </h1><br><br>";
+        getValuesArray($dadosGerais);
 
+        echo "<br><br><br> <h1>Informe Mensal: </h1><br><br>";
+        getValuesArray($informeMensal);
 
-     }
+    }
 
 }
-
-
-
 
 ?>
 </form> 
