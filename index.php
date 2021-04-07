@@ -52,21 +52,6 @@ function getValuesArray(array $array)
         }
     }
 }
-
-function getValuesArray2(array $array)
-{
-    foreach ($array as $key => $value)
-    {
-        if (is_array($value) && count($value) > 0)
-        {
-            getValuesArray2($value);
-        }
-        else
-        {
-            echo '<p>' . $key . ': ' . $value . "</p><br>\n";
-        }
-    }
-}
 ////////////////////////
 if (isset($_POST['pesquisa']))
 {
